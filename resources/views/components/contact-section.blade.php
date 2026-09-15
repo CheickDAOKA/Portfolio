@@ -45,20 +45,39 @@
 
             {{-- Formulaire de contact (Elevated Material Card) --}}
             <div class="bg-white p-8 rounded-2xl shadow-[0_4px_24px_-4px_rgba(0,0,0,0.1)] border border-gray-100">
-                <form action="#" method="POST" class="space-y-6">
+                
+                @if(session('success'))
+                    <div class="mb-6 p-4 rounded-lg bg-green-50 text-green-700 border border-green-200 text-sm font-medium flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <form action="{{ route('contact.submit') }}#contact" method="POST" class="space-y-6">
+                    @csrf
+                    
                     <div>
                         <label for="name" class="block text-sm font-semibold text-gray-900 mb-2">Nom complet</label>
-                        <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none" placeholder="John Doe" required>
+                        <input type="text" id="name" name="name" value="{{ old('name') }}" class="w-full px-4 py-3 rounded-lg bg-gray-50 border @error('name') border-red-500 @else border-gray-200 @enderror text-gray-900 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none" placeholder="John Doe" required>
+                        @error('name')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     
                     <div>
                         <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">Adresse Email</label>
-                        <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none" placeholder="john@example.com" required>
+                        <input type="email" id="email" name="email" value="{{ old('email') }}" class="w-full px-4 py-3 rounded-lg bg-gray-50 border @error('email') border-red-500 @else border-gray-200 @enderror text-gray-900 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none" placeholder="john@example.com" required>
+                        @error('email')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     
                     <div>
                         <label for="message" class="block text-sm font-semibold text-gray-900 mb-2">Votre Message</label>
-                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none resize-none" placeholder="Bonjour Cheick, je vous contacte pour..." required></textarea>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-gray-50 border @error('message') border-red-500 @else border-gray-200 @enderror text-gray-900 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none resize-none" placeholder="Bonjour Cheick, je vous contacte pour..." required>{{ old('message') }}</textarea>
+                        @error('message')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
                     
                     <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-[0_4px_14px_0_rgba(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] transition-all">

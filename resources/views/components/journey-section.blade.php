@@ -40,7 +40,7 @@
                 <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">2025</span>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Spécialisation en Machine Learning</h3>
                 <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                    Apprentissage intensif et pratique des algorithmes d'apprentissage automatique (Machine Learning) au sein d'Orange Digital Center. Une étape cruciale qui a renforcé ma capacité à concevoir des modèles prédictifs et d'automatisation.
+                    Apprentissage intensif et pratique des algorithmes d'apprentissage automatique (Machine Learning) au sein d'Orange Digital Center au Burkina Faso. Une étape cruciale qui a renforcé ma capacité à concevoir des modèles prédictifs et d'automatisation.
                 </p>
                 <div class="mt-auto pt-4 border-t border-gray-100">
                     <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Orange Digital Center</span>
@@ -53,9 +53,9 @@
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 </div>
                 <span class="inline-block px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-bold mb-4 tracking-wide uppercase">Stage Pro (3 Mois)</span>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Stagiaire Développeur Informatique</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Stagiaire Développeur full-Stack</h3>
                 <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                    Immersion professionnelle au sein du Ministère de la Communication, de la Culture, des Arts et du Tourisme. Une expérience pratique enrichissante qui m'a permis de travailler sur des cas concrets de développement et de gestion de systèmes informatiques.
+                    Immersion professionnelle au sein du Ministère de la Communication, de la Culture, des Arts et du Tourisme. Une expérience pratique enrichissante qui m'a permis de travailler sur des cas concrets de développement d'une plateforme web destinée à la promotion des acteurs des Arts visuels et de la scènedu Burkina Faso.
                 </p>
                 <div class="mt-auto pt-4 border-t border-gray-100">
                     <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Ministère - MCCAT</span>

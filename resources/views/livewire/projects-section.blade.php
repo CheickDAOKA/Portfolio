@@ -55,7 +55,7 @@ new class extends Component
                 'image' => 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop',
                 'category' => 'Web3',
                 'tags' => ['React', 'Polygon', 'Blockchain', 'Hackathon'],
-                'link' => '#'
+                'link' => 'https://skillbadg.netlify.app'
             ]
         ];
 
@@ -94,7 +94,7 @@ new class extends Component
 
         {{-- Filtres Material Design --}}
         <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
-            @foreach(['Tous', 'Mobile', 'Full-Stack', 'Backend', 'Data Science'] as $category)
+            @foreach(['Tous', 'Mobile', 'Frontend', 'Full-Stack', 'Web3'] as $category)
                 <button 
                     wire:click="setFilter('{{ $category }}')"
                     class="px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border 
