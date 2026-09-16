@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    //
+    protected $fillable = [
+        'title',
+        'description',
+        'category',
+        'is_featured',
+        'image_url',
+        'project_url',
+        'github_url',
+    ];
 }

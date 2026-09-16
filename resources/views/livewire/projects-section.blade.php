@@ -8,64 +8,11 @@ new class extends Component
 
     public function getProjectsProperty()
     {
-        $allProjects = [
-            [
-                'title' => 'Faso Tourisme',
-                'description' => 'Application mobile dédiée à la découverte touristique du Burkina Faso.',
-                'image' => 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop',
-                'category' => 'Mobile',
-                'tags' => ['Flutter', 'Dart', 'Application Mobile'],
-                'link' => 'https://github.com/CheickDAOKA/faso_tourisme'
-            ],
-            [
-                'title' => 'Gestion de Clinique',
-                'description' => 'Plateforme de gestion de rendez-vous médicaux pour une clinique (projet académique).',
-                'image' => 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1000&auto=format&fit=crop',
-                'category' => 'Full-Stack',
-                'tags' => ['Laravel', 'Blade', 'PHP', 'MySQL'],
-                'link' => 'https://github.com/CheickDAOKA/projet-scolaire-de-gestion-de-rendez-vous-d-une-clinique-'
-            ],
-            [
-                'title' => 'World Cup Legends',
-                'description' => 'Projet FIFA 2026 : Présentation des 48 nations et de leurs 48 meilleurs buteurs historiques.',
-                'image' => asset('images/worldcup.png'),
-                'category' => 'Frontend',
-                'tags' => ['React', 'TypeScript', 'Web'],
-                'link' => 'https://worldcupplayer.bolt.host/'
-            ],
-            [
-                'title' => 'Cheick Business',
-                'description' => 'Site web vitrine professionnel, portfolio et blog personnel.',
-                'image' => 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop',
-                'category' => 'Frontend',
-                'tags' => ['HTML', 'CSS', 'Portfolio'],
-                'link' => 'https://cheickdaoka.github.io/Cheick-Blog-Service/'
-            ],
-            [
-                'title' => 'Projet Département',
-                'description' => 'Création d\'un site web vitrine pour représenter le département d\'informatique (projet académique).',
-                'image' => 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop',
-                'category' => 'Frontend',
-                'tags' => ['HTML', 'CSS', 'Web'],
-                'link' => 'https://github.com/CheickDAOKA/Projet-scolaire-de-Departement'
-            ],
-            [
-                'title' => 'Skillbadge (Miabe Hackaton)',
-                'description' => 'Développement collaboratif de l\'application Skillbadge lors de la compétition Miabe Hackaton, alliant interface moderne et blockchain.',
-                'image' => asset('images/skillbadge.png'),
-                'category' => 'Web3',
-                'tags' => ['React', 'Polygon', 'Blockchain', 'Hackathon'],
-                'link' => 'https://skillbadg.netlify.app'
-            ]
-        ];
-
         if ($this->filter === 'Tous') {
-            return $allProjects;
+            return \App\Models\Project::all();
         }
 
-        return array_filter($allProjects, function ($project) {
-            return $project['category'] === $this->filter;
-        });
+        return \App\Models\Project::where('category', $this->filter)->get();
     }
 
     public function setFilter($category)
@@ -116,13 +63,13 @@ new class extends Component
                     
                     {{-- Image du projet --}}
                     <div class="relative h-64 overflow-hidden bg-gray-100 dark:bg-gray-700">
-                        <img src="{{ $project['image'] }}" alt="{{ $project['title'] }}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <img src="{{ $project->image_url ?? 'https://via.placeholder.com/600x400.png?text=Image+Projet' }}" alt="{{ $project->title }}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         
                         {{-- Badge flottant --}}
                         <div class="absolute top-4 right-4">
                             <span class="px-3 py-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm shadow-sm text-xs font-bold rounded-full text-blue-700 dark:text-blue-400">
-                                {{ $project['category'] }}
+                                {{ $project->category }}
                             </span>
                         </div>
                     </div>
@@ -130,25 +77,23 @@ new class extends Component
                     {{-- Contenu --}}
                     <div class="flex flex-col flex-1 p-8">
                         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                            {{ $project['title'] }}
+                            {{ $project->title }}
                         </h3>
                         
                         <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-8 flex-1">
-                            {{ $project['description'] }}
+                            {{ $project->description }}
                         </p>
                         
-                        {{-- Tags techniques (Chips Material) --}}
+                        {{-- Catégorie en guise de tag --}}
                         <div class="flex flex-wrap gap-2 mb-8">
-                            @foreach($project['tags'] as $tag)
-                                <span class="px-3 py-1.5 text-xs font-semibold bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 rounded-md">
-                                    {{ $tag }}
-                                </span>
-                            @endforeach
+                            <span class="px-3 py-1.5 text-xs font-semibold bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 rounded-md">
+                                {{ $project->category }}
+                            </span>
                         </div>
                         
                         {{-- Lien d'action --}}
                         <div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
-                            <a href="{{ $project['link'] }}" class="inline-flex items-center gap-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group/link">
+                            <a href="{{ $project->project_url ?? $project->github_url ?? '#' }}" class="inline-flex items-center gap-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors group/link" target="_blank">
                                 Explorer le projet
                                 <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>

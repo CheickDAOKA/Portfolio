@@ -1,3 +1,10 @@
+@php
+    $frontendSkills = \App\Models\Skill::where('category', 'Frontend')->get();
+    $backendSkills = \App\Models\Skill::where('category', 'Backend')->get();
+    $dataSkills = \App\Models\Skill::where('category', 'Data')->get();
+    $toolsSkills = \App\Models\Skill::where('category', 'Outils & DevOps')->get();
+@endphp
+
 <section id="competences" class="relative py-24 bg-white dark:bg-[#111110]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -29,9 +36,9 @@
                     <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Front & Mobile</h3>
                 </div>
                 <div class="flex flex-wrap justify-center gap-2">
-                    @foreach(['HTML5 & CSS3', 'JavaScript', 'Tailwind CSS', 'Livewire', 'Vue / Alpine', 'Dart', 'Flutter'] as $skill)
+                    @foreach($frontendSkills as $skill)
                         <span class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-colors">
-                            {{ $skill }}
+                            {{ $skill->name }}
                         </span>
                     @endforeach
                 </div>
@@ -48,9 +55,9 @@
                     <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Backend</h3>
                 </div>
                 <div class="flex flex-wrap justify-center gap-2">
-                    @foreach(['PHP', 'Laravel', 'MySQL', 'PostgreSQL'] as $skill)
+                    @foreach($backendSkills as $skill)
                         <span class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-indigo-50 hover:text-indigo-700 hover:border-indigo-200 transition-colors">
-                            {{ $skill }}
+                            {{ $skill->name }}
                         </span>
                     @endforeach
                 </div>
@@ -67,9 +74,9 @@
                     <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Data Science</h3>
                 </div>
                 <div class="flex flex-wrap justify-center gap-2">
-                    @foreach(['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Scikit-learn', 'Jupyter'] as $skill)
+                    @foreach($dataSkills as $skill)
                         <span class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-green-50 hover:text-green-700 hover:border-green-200 transition-colors">
-                            {{ $skill }}
+                            {{ $skill->name }}
                         </span>
                     @endforeach
                 </div>
@@ -87,9 +94,9 @@
                     <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Outils & Divers</h3>
                 </div>
                 <div class="flex flex-wrap justify-center gap-2">
-                    @foreach(['Git / GitHub', 'Docker', 'Linux', 'Windows'] as $skill)
+                    @foreach($toolsSkills as $skill)
                         <span class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-orange-50 hover:text-orange-700 hover:border-orange-200 transition-colors">
-                            {{ $skill }}
+                            {{ $skill->name }}
                         </span>
                     @endforeach
                 </div>
