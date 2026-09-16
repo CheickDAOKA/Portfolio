@@ -2,6 +2,7 @@
 <html lang="fr" class="scroll-smooth"
     x-data="{ dark: localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches) }"
     x-init="$watch('dark', val => { localStorage.setItem('theme', val ? 'dark' : 'light'); document.documentElement.classList.toggle('dark', val) }); document.documentElement.classList.toggle('dark', dark)"
+    @toggle-dark.window="dark = !dark"
     :class="{ 'dark': dark }">
 <head>
     <meta charset="UTF-8">
@@ -45,21 +46,21 @@
     </main>
 
     <!-- Footer -->
-    <footer class="relative z-10 border-t border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md pt-16 pb-12 mt-24 transition-colors duration-300">
+    <footer class="relative z-10 border-t border-gray-800 bg-gray-900 text-white pt-16 pb-12 mt-24 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-200 dark:border-gray-800">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
                 <div class="md:col-span-2 space-y-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-lg bg-black dark:bg-white flex items-center justify-center font-bold text-white dark:text-black font-heading text-sm">
+                        <div class="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center font-bold text-white font-heading text-sm">
                             P
                         </div>
-                        <span class="text-lg font-bold text-gray-900 dark:text-gray-100 font-heading">Cheick DAO <span class="text-blue-600 dark:text-blue-400">Portfolio</span></span>
+                        <span class="text-lg font-bold text-white font-heading">Cheick DAO <span class="text-gray-400">Portfolio</span></span>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm max-w-md leading-relaxed">
+                    <p class="text-gray-400 text-sm max-w-md leading-relaxed">
                         Conception et développement d'applications web modernes et performantes. Expertise Laravel, Livewire, architecture microservices et intégration d'APIs.
                     </p>
                     <div class="flex items-center gap-3 pt-2">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gray-800 text-gray-300 border border-gray-700">
                             <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping"></span>
                             Disponible pour de nouveaux projets
                         </span>
@@ -67,33 +68,32 @@
                 </div>
 
                 <div>
-                    <h4 class="text-xs uppercase font-bold tracking-wider text-gray-500 dark:text-gray-400 mb-4">Navigation</h4>
-                    <ul class="space-y-2.5 text-sm text-gray-600 dark:text-gray-400">
-                        <li><a href="#accueil" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Accueil</a></li>
-                        <li><a href="#competences" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Compétences</a></li>
-                        <li><a href="#projets" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projets</a></li>
-                        <li><a href="#parcours" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Parcours</a></li>
-                        <li><a href="#a-propos" class="hover:text-blue-600 dark:hover:text-blue-400 transition">À Propos</a></li>
-                        <li><a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a></li>
+                    <h4 class="text-xs uppercase font-bold tracking-wider text-gray-500 mb-4">Navigation</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li><a href="#accueil" class="hover:text-white transition">Accueil</a></li>
+                        <li><a href="#competences" class="hover:text-white transition">Compétences</a></li>
+                        <li><a href="#projets" class="hover:text-white transition">Projets</a></li>
+                        <li><a href="#parcours" class="hover:text-white transition">Parcours</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-xs uppercase font-bold tracking-wider text-gray-500 dark:text-gray-400 mb-4">Stack Utilisée</h4>
-                    <div class="flex flex-wrap gap-2 text-xs text-gray-600 dark:text-gray-400">
-                        <span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Laravel 13</span>
-                        <span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Livewire 4</span>
-                        <span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Tailwind CSS 4</span>
-                        <span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">Vite</span>
-                        <span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">SQLite</span>
+                    <h4 class="text-xs uppercase font-bold tracking-wider text-gray-500 mb-4">Stack Utilisée</h4>
+                    <div class="flex flex-wrap gap-2 text-xs text-gray-400">
+                        <span class="px-2.5 py-1 rounded-md bg-gray-800 border border-gray-700">Laravel 13</span>
+                        <span class="px-2.5 py-1 rounded-md bg-gray-800 border border-gray-700">Livewire 4</span>
+                        <span class="px-2.5 py-1 rounded-md bg-gray-800 border border-gray-700">Tailwind CSS 4</span>
+                        <span class="px-2.5 py-1 rounded-md bg-gray-800 border border-gray-700">Vite</span>
+                        <span class="px-2.5 py-1 rounded-md bg-gray-800 border border-gray-700">SQLite</span>
                     </div>
                 </div>
             </div>
 
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 dark:text-gray-500">
-                <p>&copy; {{ date('Y') }} Cheick Abdoul kader DAO. Tous droits réservés. Construit avec Laravel & Livewire.</p>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <p>&copy; {{ date('Y') }} Cheick Abdoul kader DAO. Tous droits réservés.</p>
                 <div class="flex items-center gap-6">
-                    <a href="#accueil" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Retour en haut ↑</a>
+                    <a href="#accueil" class="hover:text-white transition">Retour en haut ↑</a>
                 </div>
             </div>
         </div>
