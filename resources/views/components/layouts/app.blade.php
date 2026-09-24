@@ -7,8 +7,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio Développeur Full-Stack Laravel & Livewire - Conception d'applications web robustes, d'APIs performantes et d'interfaces modernes.">
-    <title>{{ $title ?? 'Cheick Abdoul kader DAO | Portfolio' }}</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>{{ $title ?? 'Cheick Abdoul Kader DAO | Développeur Full-Stack Laravel au Burkina Faso' }}</title>
+    <meta name="description" content="Cheick Abdoul Kader DAO — Développeur Full-Stack & Data Scientist au Burkina Faso. Spécialiste Laravel, Livewire, APIs REST et applications web modernes. Disponible pour vos projets.">
+    <meta name="keywords" content="Cheick DAO, Cheick Abdoul Kader DAO, développeur full-stack, développeur web Burkina Faso, Laravel, Livewire, PHP, Data Scientist, Ouagadougou, freelance, portfolio">
+    <meta name="author" content="Cheick Abdoul Kader DAO">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ config('app.url') }}">
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cheick Abdoul Kader DAO | Développeur Full-Stack Laravel">
+    <meta property="og:description" content="Développeur Full-Stack & Data Scientist au Burkina Faso. Spécialiste Laravel, Livewire et applications web modernes.">
+    <meta property="og:url" content="{{ config('app.url') }}">
+    <meta property="og:site_name" content="Portfolio Cheick DAO">
+    <meta property="og:locale" content="fr_BF">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cheick Abdoul Kader DAO | Développeur Full-Stack Laravel">
+    <meta name="twitter:description" content="Développeur Full-Stack & Data Scientist au Burkina Faso. Spécialiste Laravel, Livewire et applications web modernes.">
+
+    <!-- Schema.org JSON-LD (Données structurées pour Google) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Cheick Abdoul Kader DAO",
+        "jobTitle": "Développeur Full-Stack & Data Scientist",
+        "url": "{{ config('app.url') }}",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "BF",
+            "addressLocality": "Burkina Faso"
+        },
+        "knowsAbout": ["Laravel", "Livewire", "PHP", "JavaScript", "Python", "Data Science", "API REST"],
+        "sameAs": []
+    }
+    </script>
 
     <!-- Google Fonts Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
