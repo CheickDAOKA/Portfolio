@@ -33,13 +33,13 @@
     <!-- Schema.org JSON-LD (Données structurées pour Google) -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Person",
+        "@@context": "https://schema.org",
+        "@@type": "Person",
         "name": "Cheick Abdoul Kader DAO",
         "jobTitle": "Développeur Full-Stack & Data Scientist",
         "url": "{{ config('app.url') }}",
         "address": {
-            "@type": "PostalAddress",
+            "@@type": "PostalAddress",
             "addressCountry": "BF",
             "addressLocality": "Burkina Faso"
         },
