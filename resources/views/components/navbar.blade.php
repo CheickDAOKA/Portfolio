@@ -38,7 +38,7 @@
                 <!-- Toggle Dark Mode -->
                 <button
                     type="button"
-                    @click="dark = !dark"
+                    @click="$dispatch('toggle-dark')"
                     class="p-2 rounded-full transition-colors"
                     :class="scrolled ? 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200/50 dark:hover:bg-gray-700/50'"
                     aria-label="Basculer le mode sombre"
