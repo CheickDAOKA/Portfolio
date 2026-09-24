@@ -15,6 +15,22 @@ class SkillSeeder extends Seeder
         \App\Models\Skill::insert([
             // Frontend
             [
+                'name' => 'Flutter',
+                'category' => 'Frontend',
+                'proficiency' => 85,
+                'icon' => 'fa-brands fa-flutter',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Dart',
+                'category' => 'Frontend',
+                'proficiency' => 85,
+                'icon' => 'fa-brands fa-dart',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'name' => 'React',
                 'category' => 'Frontend',
                 'proficiency' => 90,
