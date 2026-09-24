@@ -11,8 +11,8 @@
     
     <!-- SEO Meta Tags -->
     <title>{{ $title ?? 'Cheick Abdoul Kader DAO | Développeur Full-Stack Laravel au Burkina Faso' }}</title>
-    <meta name="description" content="Cheick Abdoul Kader DAO — Développeur Full-Stack & Data Scientist au Burkina Faso. Spécialiste Laravel, Livewire, APIs REST et applications web modernes. Disponible pour vos projets.">
-    <meta name="keywords" content="Cheick DAO, Cheick Abdoul Kader DAO, développeur full-stack, développeur web Burkina Faso, Laravel, Livewire, PHP, Data Scientist, Ouagadougou, freelance, portfolio">
+    <meta name="description" content="Cheick Abdoul Kader DAO — Développeur Full-Stack, Mobile (Flutter) & Data Scientist au Burkina Faso. Spécialiste Laravel, Flutter, et applications web/mobiles modernes. Disponible pour vos projets.">
+    <meta name="keywords" content="Cheick DAO, Cheick Abdoul Kader DAO, développeur full-stack, développeur web Burkina Faso, développeur mobile, Flutter, Dart, Laravel, Livewire, PHP, Data Scientist, Ouagadougou, freelance, portfolio">
     <meta name="author" content="Cheick Abdoul Kader DAO">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ config('app.url') }}">
@@ -43,7 +43,7 @@
             "addressCountry": "BF",
             "addressLocality": "Burkina Faso"
         },
-        "knowsAbout": ["Laravel", "Livewire", "PHP", "JavaScript", "Python", "Data Science", "API REST"],
+        "knowsAbout": ["Laravel", "Livewire", "PHP", "JavaScript", "Python", "Data Science", "API REST", "Flutter", "Dart"],
         "sameAs": []
     }
     </script>
