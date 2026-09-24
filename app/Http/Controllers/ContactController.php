@@ -22,7 +22,7 @@ class ContactController extends Controller
         try {
             Mail::to('daocheick383@gmail.com')->send(new ContactMessageCreated($message));
         } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Erreur d\'envoi email: ' . $e->getMessage());
+            return back()->with('error', 'Erreur d\'envoi email: ' . $e->getMessage());
         }
 
         return back()->with('success', 'Votre message a bien été envoyé ! Je vous répondrai dans les plus brefs délais.');
