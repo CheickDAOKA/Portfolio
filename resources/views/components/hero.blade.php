@@ -43,26 +43,26 @@
             </div>
 
             <!-- Image/Illustration (Droite) - Matérialisation de l'espace -->
-            <div class="relative hidden lg:block">
+            <div class="relative mt-12 lg:mt-0 max-w-sm sm:max-w-md lg:max-w-none mx-auto w-full">
                 <!-- Motif d'arrière-plan -->
-                <div class="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-full blur-3xl opacity-60 transform scale-110"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 dark:from-blue-900/40 dark:to-indigo-900/30 rounded-full blur-3xl opacity-60 transform scale-110"></div>
                 
                 <!-- Carte d'image Material (Elevated Card) -->
                 <div class="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-white dark:border-gray-700 bg-white dark:bg-gray-800 p-2 z-10 group">
                     <img 
                         src="{{ asset('images/profile.jpg') }}" 
                         alt="Cheick Abdoul Kader DAO - Diplômé de l'Université Thomas Sankara" 
-                        class="w-full h-[500px] sm:h-[600px] object-cover object-top rounded-xl group-hover:scale-[1.02] transition-transform duration-500"
+                        class="w-full h-[380px] sm:h-[480px] lg:h-[600px] object-cover object-top rounded-xl group-hover:scale-[1.02] transition-transform duration-500"
                     >
                     
                     <!-- Élément flottant (Widget d'information) -->
-                    <div class="absolute bottom-6 -left-6 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300">
-                        <div class="w-12 h-12 bg-blue-50 dark:bg-gray-700 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                    <div class="absolute bottom-4 left-4 sm:bottom-6 sm:-left-6 bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 flex items-center gap-3 sm:gap-4 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-50 dark:bg-gray-700 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                         </div>
                         <div>
-                            <p class="text-sm font-bold text-gray-900 dark:text-white">Innovation & Code</p>
-                            <p class="text-xs text-gray-500 dark:text-gray-400">Architecture moderne</p>
+                            <p class="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">Innovation & Code</p>
+                            <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">Architecture moderne</p>
                         </div>
                     </div>
                 </div>

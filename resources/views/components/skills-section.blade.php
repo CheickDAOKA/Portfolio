@@ -26,80 +26,176 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
             {{-- Frontend & Mobile --}}
-            <div class="group bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
-                <div class="flex flex-col items-center text-center mb-6">
-                    <div class="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                        </svg>
+            <div x-data="{ expanded: false }" class="group flex flex-col justify-between bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+                <div>
+                    <div class="flex flex-col items-center text-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Front & Mobile</h3>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Front & Mobile</h3>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        @foreach($frontendSkills as $index => $skill)
+                            <span 
+                                @if($index >= 5) 
+                                    x-show="expanded" 
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 scale-95"
+                                    x-transition:enter-end="opacity-100 scale-100"
+                                    style="display: none;"
+                                @endif
+                                class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-colors">
+                                {{ $skill->name }}
+                            </span>
+                        @endforeach
+                    </div>
                 </div>
-                <div class="flex flex-wrap justify-center gap-2">
-                    @foreach($frontendSkills as $skill)
-                        <span class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-colors">
-                            {{ $skill->name }}
-                        </span>
-                    @endforeach
-                </div>
+
+                @if($frontendSkills->count() > 5)
+                    <div class="mt-5 pt-3 border-t border-gray-100 dark:border-gray-700/60 text-center">
+                        <button 
+                            @click="expanded = !expanded" 
+                            type="button" 
+                            class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors py-1 px-2.5 rounded-md hover:bg-blue-50 dark:hover:bg-blue-900/30">
+                            <span x-text="expanded ? 'Voir moins' : 'Voir plus (+{{ $frontendSkills->count() - 5 }})'"></span>
+                            <svg :class="{ 'rotate-180': expanded }" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                    </div>
+                @endif
             </div>
 
             {{-- Backend --}}
-            <div class="group bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
-                <div class="flex flex-col items-center text-center mb-6">
-                    <div class="w-14 h-14 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
-                        </svg>
+            <div x-data="{ expanded: false }" class="group flex flex-col justify-between bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+                <div>
+                    <div class="flex flex-col items-center text-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Backend</h3>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Backend</h3>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        @foreach($backendSkills as $index => $skill)
+                            <span 
+                                @if($index >= 5) 
+                                    x-show="expanded" 
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 scale-95"
+                                    x-transition:enter-end="opacity-100 scale-100"
+                                    style="display: none;"
+                                @endif
+                                class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-indigo-50 hover:text-indigo-700 hover:border-indigo-200 transition-colors">
+                                {{ $skill->name }}
+                            </span>
+                        @endforeach
+                    </div>
                 </div>
-                <div class="flex flex-wrap justify-center gap-2">
-                    @foreach($backendSkills as $skill)
-                        <span class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-indigo-50 hover:text-indigo-700 hover:border-indigo-200 transition-colors">
-                            {{ $skill->name }}
-                        </span>
-                    @endforeach
-                </div>
+
+                @if($backendSkills->count() > 5)
+                    <div class="mt-5 pt-3 border-t border-gray-100 dark:border-gray-700/60 text-center">
+                        <button 
+                            @click="expanded = !expanded" 
+                            type="button" 
+                            class="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors py-1 px-2.5 rounded-md hover:bg-indigo-50 dark:hover:bg-indigo-900/30">
+                            <span x-text="expanded ? 'Voir moins' : 'Voir plus (+{{ $backendSkills->count() - 5 }})'"></span>
+                            <svg :class="{ 'rotate-180': expanded }" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                    </div>
+                @endif
             </div>
 
             {{-- Data Science --}}
-            <div class="group bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
-                <div class="flex flex-col items-center text-center mb-6">
-                    <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center text-green-600 mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
+            <div x-data="{ expanded: false }" class="group flex flex-col justify-between bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+                <div>
+                    <div class="flex flex-col items-center text-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Data Science</h3>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Data Science</h3>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        @foreach($dataSkills as $index => $skill)
+                            <span 
+                                @if($index >= 5) 
+                                    x-show="expanded" 
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 scale-95"
+                                    x-transition:enter-end="opacity-100 scale-100"
+                                    style="display: none;"
+                                @endif
+                                class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-green-50 hover:text-green-700 hover:border-green-200 transition-colors">
+                                {{ $skill->name }}
+                            </span>
+                        @endforeach
+                    </div>
                 </div>
-                <div class="flex flex-wrap justify-center gap-2">
-                    @foreach($dataSkills as $skill)
-                        <span class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-green-50 hover:text-green-700 hover:border-green-200 transition-colors">
-                            {{ $skill->name }}
-                        </span>
-                    @endforeach
-                </div>
+
+                @if($dataSkills->count() > 5)
+                    <div class="mt-5 pt-3 border-t border-gray-100 dark:border-gray-700/60 text-center">
+                        <button 
+                            @click="expanded = !expanded" 
+                            type="button" 
+                            class="inline-flex items-center gap-1.5 text-xs font-semibold text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors py-1 px-2.5 rounded-md hover:bg-green-50 dark:hover:bg-green-900/30">
+                            <span x-text="expanded ? 'Voir moins' : 'Voir plus (+{{ $dataSkills->count() - 5 }})'"></span>
+                            <svg :class="{ 'rotate-180': expanded }" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                    </div>
+                @endif
             </div>
 
             {{-- Outils & Divers --}}
-            <div class="group bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
-                <div class="flex flex-col items-center text-center mb-6">
-                    <div class="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center text-orange-600 mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
+            <div x-data="{ expanded: false }" class="group flex flex-col justify-between bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-8 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300">
+                <div>
+                    <div class="flex flex-col items-center text-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400 mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Outils & Divers</h3>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-white tracking-wide">Outils & Divers</h3>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        @foreach($toolsSkills as $index => $skill)
+                            <span 
+                                @if($index >= 5) 
+                                    x-show="expanded" 
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 scale-95"
+                                    x-transition:enter-end="opacity-100 scale-100"
+                                    style="display: none;"
+                                @endif
+                                class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-orange-50 hover:text-orange-700 hover:border-orange-200 transition-colors">
+                                {{ $skill->name }}
+                            </span>
+                        @endforeach
+                    </div>
                 </div>
-                <div class="flex flex-wrap justify-center gap-2">
-                    @foreach($toolsSkills as $skill)
-                        <span class="px-3 py-1.5 text-xs font-medium rounded-md bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-orange-50 hover:text-orange-700 hover:border-orange-200 transition-colors">
-                            {{ $skill->name }}
-                        </span>
-                    @endforeach
-                </div>
+
+                @if($toolsSkills->count() > 5)
+                    <div class="mt-5 pt-3 border-t border-gray-100 dark:border-gray-700/60 text-center">
+                        <button 
+                            @click="expanded = !expanded" 
+                            type="button" 
+                            class="inline-flex items-center gap-1.5 text-xs font-semibold text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition-colors py-1 px-2.5 rounded-md hover:bg-orange-50 dark:hover:bg-orange-900/30">
+                            <span x-text="expanded ? 'Voir moins' : 'Voir plus (+{{ $toolsSkills->count() - 5 }})'"></span>
+                            <svg :class="{ 'rotate-180': expanded }" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                    </div>
+                @endif
             </div>
 
         </div>
