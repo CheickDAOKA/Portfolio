@@ -12,6 +12,8 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
+        \App\Models\Project::query()->delete();
+
         \App\Models\Project::insert([
             [
                 'title' => 'Faso Tourisme',

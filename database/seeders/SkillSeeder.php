@@ -12,6 +12,8 @@ class SkillSeeder extends Seeder
      */
     public function run(): void
     {
+        \App\Models\Skill::query()->delete();
+
         \App\Models\Skill::insert([
             // Frontend
             [
@@ -64,6 +66,22 @@ class SkillSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'name' => 'Django',
+                'category' => 'Backend',
+                'proficiency' => 80,
+                'icon' => 'fa-solid fa-code',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Python',
+                'category' => 'Backend',
+                'proficiency' => 85,
+                'icon' => 'fa-brands fa-python',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'name' => 'Node.js',
                 'category' => 'Backend',
                 'proficiency' => 80,
@@ -73,18 +91,26 @@ class SkillSeeder extends Seeder
             ],
             // Outils / DevOps
             [
-                'name' => 'Docker',
-                'category' => 'Outils & DevOps',
-                'proficiency' => 60,
-                'icon' => 'fa-brands fa-docker',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
                 'name' => 'Git',
                 'category' => 'Outils & DevOps',
                 'proficiency' => 90,
                 'icon' => 'fa-brands fa-git-alt',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'GitHub',
+                'category' => 'Outils & DevOps',
+                'proficiency' => 90,
+                'icon' => 'fa-brands fa-github',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Docker',
+                'category' => 'Outils & DevOps',
+                'proficiency' => 60,
+                'icon' => 'fa-brands fa-docker',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
